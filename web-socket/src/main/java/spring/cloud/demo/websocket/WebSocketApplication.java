@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import spring.cloud.demo.websocket.websocket.WebSocketServer;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
@@ -43,5 +45,10 @@ public class WebSocketApplication {
         return ResponseEntity.ok("MSG SEND SUCCESS");
     }
 
+    @GetMapping("/redirect")
+    public String redirectTest(HttpServletResponse response, RedirectAttributes attr) throws IOException {
+        attr.addAttribute("name", "hdr");
+        return "redirect:/index";
+    }
 
 }
