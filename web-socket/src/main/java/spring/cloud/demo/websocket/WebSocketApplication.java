@@ -1,5 +1,7 @@
 package spring.cloud.demo.websocket;
 
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
+import spring.cloud.demo.websocket.dao.UserDao;
 import spring.cloud.demo.websocket.websocket.WebSocketServer;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +21,19 @@ import java.io.IOException;
 
 @RestController
 @SpringBootApplication
+@MapperScan
 public class WebSocketApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebSocketApplication.class, args);
+    }
+
+    @Autowired
+    private UserDao userDao;
+
+    @GetMapping("/user")
+    public int countUser(){
+        return userDao.count();
     }
 
     @Bean
