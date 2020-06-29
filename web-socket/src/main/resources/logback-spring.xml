@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <property name="appName" value="web-socket" />
     <property name="pattern" value="%d{YYYY-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%thread] %-5level %logger{36}[%L] - %m%n" />
+    <property name="appName" value="web-socket" />
     <property name="logHome" value="/home/hdr/IdeaProjects/logs" />
     <property name="logPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{traceId}] [%thread] %-5level %logger{36}[%L] - %msg%n"/>
 
@@ -23,9 +23,9 @@
             </encoder>
         </appender>
 
-        <logger name="mybatis.sql" level="DEBUG">
-            <appender-ref ref="MyBatis"/>
-        </logger>
+<!--        <logger name="mybatis.sql" level="DEBUG">-->
+<!--            <appender-ref ref="MyBatis"/>-->
+<!--        </logger>-->
 
         <root level="info">
             <appender-ref ref="console" />
